@@ -11,7 +11,6 @@ exports.signUpSchema = zod_1.default.object({
     password: zod_1.default.string()
 });
 exports.signInSchema = zod_1.default.object({
-    name: zod_1.default.string(),
     email: zod_1.default.string().email(),
     password: zod_1.default.string()
 });

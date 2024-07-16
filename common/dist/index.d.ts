@@ -14,15 +14,12 @@ export declare const signUpSchema: z.ZodObject<{
 }>;
 export type SignUp = z.infer<typeof signUpSchema>;
 export declare const signInSchema: z.ZodObject<{
-    name: z.ZodString;
     email: z.ZodString;
     password: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-    name: string;
     email: string;
     password: string;
 }, {
-    name: string;
     email: string;
     password: string;
 }>;
