@@ -61,9 +61,9 @@ userRouter.post('/signup', async (c) => {
 			}
 		})
 
-		const jwt = await sign({ id: user.id }, c.env.JWT_SECRET)
+		const jwt = 'Bearer ' + await sign({ id: user.id }, c.env.JWT_SECRET)
 		c.status(200)
-		return c.json({ jwt })
+		return c.text(jwt)
 	}
 	catch {
 		c.status(403)
@@ -84,17 +84,18 @@ userRouter.post('/signin', async (c) => {
 	// })
 	
 	const body = await c.req.json()
-
+	console.log(body)
 	if (!body) {
 		c.status(400)
 		return c.json({
 			msg: 'Unable to signup/Invalid Credentials'
 		})
 	}
-
-	const { success } = signInSchema.safeParse(body)
+	
+	const { success,error } = signInSchema.safeParse(body)
 
 	if (!success) {
+		console.log(error)
 		c.status(403)
 		return c.text('Error signing up!')
 	}
@@ -122,7 +123,14 @@ userRouter.post('/signin', async (c) => {
 	const auth = 'Bearer ' + jwt 
 	// console.log(auth)
 	// c.header('Authentication',auth)
-	return c.json({ auth })
+	return c.text( auth )
 
 })
 
+userRouter.get('/profile',async (c) => {
+	const prisma = new PrismaClient({
+		datasourceUrl: c.env.DATABASE_URL
+	}).$extends(withAccelerate())
+
+	
+})

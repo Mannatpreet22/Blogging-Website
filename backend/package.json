@@ -5,9 +5,10 @@
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
-    "@mannat/medium-commons": "^1.0.0",
+    "@mannat/medium-commons": "^2.0.0",
     "@prisma/client": "^5.16.1",
     "@prisma/extension-accelerate": "^1.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "hono": "^4.4.11",
     "i": "^0.3.7",
