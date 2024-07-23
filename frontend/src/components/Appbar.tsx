@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Avatar } from "./Avatar"
 import { PublishButton } from "./PublishButton"
-
+import { Logout } from "./Logout"
 
 export const Appbar = ()=>{
     return <div className="w-screen h-16 flex justify-between items-center px-4 border-b">
@@ -12,7 +12,8 @@ export const Appbar = ()=>{
         </Link>
         
         <div className="">
-        <PublishButton />
+            <PublishButton />
+            <Logout></Logout>
             <Avatar name="Mannat" size="h-10 w-10"></Avatar>
         </div>
     </div>
